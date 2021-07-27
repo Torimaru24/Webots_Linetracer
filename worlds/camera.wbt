@@ -1,0 +1,100 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Example use of a color Camera device."
+  ]
+  title "Camera"
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.9993654048920518 0.030316333863728808 -0.018700465395494855 5.290980871550239
+  position -0.08904298367592389 2.3230564787455736 1.5765043578707714
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 3 2
+  floorAppearance PBRAppearance {
+    roughness 1
+    roughnessMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_roughness.jpg"
+      ]
+    }
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_normal.jpg"
+      ]
+    }
+    occlusionMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_occlusion.jpg"
+      ]
+    }
+  }
+}
+PointLight {
+  attenuation 0 0 1
+  intensity 0.6
+  location 0 0.6 0
+}
+
+DEF T1 TrackOne {
+  translation -0.7 -0.0075 0.5
+  name "T1"
+}
+DEF T2 TrackOne {
+  translation -0.7 -0.0075 -0.5
+  name "T2"
+}
+DEF T3 TrackOne {
+  translation 0.7 -0.0075 0.5
+  name "T3"
+}
+DEF T4 TrackOne {
+  translation 0.7 -0.0075 -0.5
+  name "T4"
+}
+// DEF R1 MyBot {
+//  translation 0 0 0
+//  rotation 0 1 0 1.5708
+//  name "R1"
+//  controller "camera"
+// }
+DEF R2 MyBot {
+  translation -0.55 0 0.62
+  rotation 0 1 0 1.5708
+  name "R2"
+  controller "mybot_default"
+}
+// DEF R3 MyBot {
+//  translation -0.55 0 -0.38
+//  rotation 0 1 0 1.5708
+//  name "R3"
+//  controller "mybot_reinforce"
+// }
+DEF R4 MyBot {
+  translation 0.85 0 0.62
+  rotation 0 1 0 1.5708
+  name "R4"
+  controller "mybot_genetic"
+}
+// DEF R5 MyBot {
+//  translation 0.85 0 -0.38
+//  rotation 0 1 0 1.5708
+//  name "R5"
+//  controller "mybot_neural"
+// }
+Robot {
+  children [
+    Emitter {
+    }
+    Receiver {
+    }
+  ]
+  controller "linetracer_supervisor"
+  supervisor TRUE
+}
